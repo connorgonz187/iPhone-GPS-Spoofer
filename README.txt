@@ -43,13 +43,16 @@ FIRST-TIME SETUP (do once)
        python -m pymobiledevice3 lockdown pair
 
 8. Copy the example config and fill in your coordinates:
-   - Copy config.toml.example and rename the copy to config.toml
    - Open config.toml and replace the placeholder coordinates with:
        [home]  -> your actual home latitude and longitude
        [away]  -> a location at least 500 meters away from home
 
    To find your coordinates: open Google Maps, right-click your home, copy the numbers.
    First number = latitude, second = longitude.
+
+OPTIONAL GUI
+  Run "python gui_sim.py" and right click on desired spoofed location.
+    This acts in place of config.toml
 
 
 EVERY TIME YOU USE IT
