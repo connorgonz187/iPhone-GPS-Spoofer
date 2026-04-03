@@ -1,0 +1,9 @@
+[home]
+# Coordinates of your home — triggers "arriving" geofence automations
+latitude  = 39.678417
+longitude = -84.104050
+
+[away]
+# Must be at least 500m from home to reliably trigger a "leave" geofence
+latitude  = 39.6905
+longitude = -84.1451

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pip show:*)",
+      "Bash(pip3 show:*)",
+      "Bash(python -m pip show pymobiledevice3)",
+      "Bash(python -c \"import sys; print\\(sys.version\\)\")",
+      "Bash(where python:*)",
+      "Bash(where pip:*)",
+      "Bash(C:/Python313/Scripts/pip.exe show:*)",
+      "Bash(C:/Python313/Scripts/pip.exe list:*)",
+      "Bash(python -c \"import urllib.request; data = urllib.request.urlopen\\('https://pypi.org/pypi/pymobiledevice3/json'\\).read\\(\\).decode\\(\\); import json; info = json.loads\\(data\\); print\\('Latest version:', info['info']['version']\\); print\\('Requires Python:', info['info']['requires_python']\\)\")",
+      "Bash(python -m ruff check location_sim.py)",
+      "Bash(python -m flake8 location_sim.py)",
+      "Bash(python -m mypy location_sim.py --ignore-missing-imports)",
+      "Bash(pip install:*)",
+      "Bash(python -c \"import platform; print\\(platform.python_version\\(\\), platform.architecture\\(\\)\\)\")",
+      "Bash(where cl:*)",
+      "Bash(where gcc:*)",
+      "Bash(where cmake:*)",
+      "Bash(pip download:*)"
+    ]
+  }
+}
