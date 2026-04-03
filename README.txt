@@ -30,16 +30,19 @@ FIRST-TIME SETUP (do once)
    Open a terminal and run:
        pip install -r requirements.txt
 
-4. Enable Developer Mode on iPhone:
-   Settings -> Privacy & Security -> Developer Mode -> toggle ON -> Restart
-
-5. Plug iPhone into PC via USB.
+4. Plug iPhone into PC via USB.
    When prompted on the iPhone, tap "Trust This Computer" and enter your passcode.
 
-6. Pair the device (run once per device):
+5. Install Sideloadly and a random .ipa of your choice (I used iTorrent)
+   After installing the .ipa through Sideloadly you can procede to step 6
+
+6. Enable Developer Mode on iPhone:
+   Settings -> Privacy & Security -> Developer Mode -> toggle ON -> Restart
+
+7. Pair the device (run once per device):
        python -m pymobiledevice3 lockdown pair
 
-7. Copy the example config and fill in your coordinates:
+8. Copy the example config and fill in your coordinates:
    - Copy config.toml.example and rename the copy to config.toml
    - Open config.toml and replace the placeholder coordinates with:
        [home]  -> your actual home latitude and longitude
@@ -58,6 +61,9 @@ EVERY TIME YOU USE IT
 
 3. Run one of the commands below from a normal terminal.
 
+KEEP LOCATION AFTER UNPLUGGING
+  -> Set location then turn off developer Mode
+    -> Then unplug from computer and location will stay
 
 COMMANDS
 --------
@@ -80,7 +86,6 @@ TESTING IT WORKS
 
 If the pin moves correctly, geofence automations will fire.
 After running "enter", wait up to 60 seconds for automations to trigger.
-
 
 TROUBLESHOOTING
 ---------------
@@ -107,7 +112,3 @@ Automation does not fire after "enter"
 "NotPairedError" or pairing error
   -> Re-run: pymobiledevice3 usbmux pair
      Then unplug and replug the iPhone.
-
-KEEP LOCATION AFTER UNPLUGGING
-  -> Set location then turn off developer Mode
-    -> Then unplug from computer and location will stay
