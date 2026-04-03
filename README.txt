@@ -107,3 +107,7 @@ Automation does not fire after "enter"
 "NotPairedError" or pairing error
   -> Re-run: pymobiledevice3 usbmux pair
      Then unplug and replug the iPhone.
+
+KEEP LOCATION AFTER UNPLUGGING
+  -> Set location then turn off developer Mode
+    -> Then unplug from computer and location will stay
