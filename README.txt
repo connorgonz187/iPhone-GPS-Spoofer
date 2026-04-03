@@ -24,7 +24,7 @@ FIRST-TIME SETUP (do once)
 --------------------------
 1. Install Microsoft C++ Build Tools (see REQUIREMENTS above).
 
-2. Install iTunes from the Microsoft Store and open it at least once.
+2. Install Apple Devices from the Microsoft Store and open it at least once.
 
 3. Install Python dependencies:
    Open a terminal and run:
