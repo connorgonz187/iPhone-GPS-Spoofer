@@ -24,29 +24,35 @@ FIRST-TIME SETUP (do once)
 --------------------------
 1. Install Microsoft C++ Build Tools (see REQUIREMENTS above).
 
-2. Install iTunes from the Microsoft Store and open it at least once.
+2. Install Apple Devices from the Microsoft Store and open it at least once.
 
 3. Install Python dependencies:
    Open a terminal and run:
        pip install -r requirements.txt
 
-4. Enable Developer Mode on iPhone:
-   Settings -> Privacy & Security -> Developer Mode -> toggle ON -> Restart
-
-5. Plug iPhone into PC via USB.
+4. Plug iPhone into PC via USB.
    When prompted on the iPhone, tap "Trust This Computer" and enter your passcode.
 
-6. Pair the device (run once per device):
+5. Install Sideloadly and a random .ipa of your choice (I used iTorrent)
+   After installing the .ipa through Sideloadly you can procede to step 6
+
+6. Enable Developer Mode on iPhone:
+   Settings -> Privacy & Security -> Developer Mode -> toggle ON -> Restart
+
+7. Pair the device (run once per device):
        python -m pymobiledevice3 lockdown pair
 
-7. Copy the example config and fill in your coordinates:
-   - Copy config.toml.example and rename the copy to config.toml
+8. Copy the example config and fill in your coordinates:
    - Open config.toml and replace the placeholder coordinates with:
        [home]  -> your actual home latitude and longitude
        [away]  -> a location at least 500 meters away from home
 
    To find your coordinates: open Google Maps, right-click your home, copy the numbers.
    First number = latitude, second = longitude.
+
+OPTIONAL GUI
+  Run "python gui_sim.py" and right click on desired spoofed location.
+    This acts in place of config.toml
 
 
 EVERY TIME YOU USE IT
@@ -58,6 +64,9 @@ EVERY TIME YOU USE IT
 
 3. Run one of the commands below from a normal terminal.
 
+KEEP LOCATION AFTER UNPLUGGING
+  -> Set location then turn off developer Mode
+    -> Then unplug from computer and location will stay
 
 COMMANDS
 --------
@@ -80,7 +89,6 @@ TESTING IT WORKS
 
 If the pin moves correctly, geofence automations will fire.
 After running "enter", wait up to 60 seconds for automations to trigger.
-
 
 TROUBLESHOOTING
 ---------------
@@ -107,7 +115,3 @@ Automation does not fire after "enter"
 "NotPairedError" or pairing error
   -> Re-run: pymobiledevice3 usbmux pair
      Then unplug and replug the iPhone.
-
-KEEP LOCATION AFTER UNPLUGGING
-  -> Set location then turn off developer Mode
-    -> Then unplug from computer and location will stay
