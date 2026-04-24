@@ -21,7 +21,12 @@
       "Bash(where cl:*)",
       "Bash(where gcc:*)",
       "Bash(where cmake:*)",
-      "Bash(pip download:*)"
+      "Bash(pip download:*)",
+      "Bash(python -c \"import customtkinter; import os; print\\(os.path.dirname\\(customtkinter.__file__\\)\\)\")",
+      "Bash(python -m PyInstaller --onefile --windowed --uac-admin --name \"LocationSim\" --add-data \"C:\\\\Users\\\\larry\\\\AppData\\\\Roaming\\\\Python\\\\Python313\\\\site-packages\\\\customtkinter;customtkinter/\" app.py)",
+      "Bash(python -m PyInstaller LocationSim.spec --noconfirm)",
+      "Bash(taskkill /IM \"LocationSim.exe\" /F)",
+      "Bash(taskkill //IM \"LocationSim.exe\" //F)"
     ]
   }
 }

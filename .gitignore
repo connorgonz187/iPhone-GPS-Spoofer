@@ -1,2 +1,5 @@
 config.toml
 map_cache.db
+build/
+dist/
+*.spec

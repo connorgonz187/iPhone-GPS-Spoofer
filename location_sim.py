@@ -26,7 +26,12 @@ from pymobiledevice3.services.dvt.instruments.location_simulation import Locatio
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
 
-CONFIG_PATH = Path(__file__).parent / "config.toml"
+if getattr(sys, "frozen", False):
+    _BASE_DIR = Path(sys.executable).parent
+else:
+    _BASE_DIR = Path(__file__).parent
+
+CONFIG_PATH = _BASE_DIR / "config.toml"
 
 
 def load_config() -> dict:
@@ -71,7 +76,7 @@ async def get_device(udid: str | None = None):
     return selected
 
 
-async def _run(lat: float, lon: float | None, clear: bool = False):
+async def _run(lat: float, lon: float | None, clear: bool = False, on_success=None):
     rsd = await get_device()
     log.info("Connected: %s", rsd.udid)
 
@@ -85,8 +90,8 @@ async def _run(lat: float, lon: float | None, clear: bool = False):
                 else:
                     await loc.set(lat, lon)
                     log.info("Location set to %.6f, %.6f", lat, lon)
-
-                    #Holds location indefinately (ctrl + c)
+                    if on_success:
+                        on_success()
                     log.info("Holding location...")
                     while True:
                         await asyncio.sleep(1)
