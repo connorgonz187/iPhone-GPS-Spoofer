@@ -2,13 +2,14 @@ import customtkinter
 import tkintermapview
 import asyncio
 import threading
-from location_sim import _run # Imports your existing connection logic!
+from pathlib import Path
+from location_sim import _run
 
-class GhostMeGUI(customtkinter.CTk):
+class LocationGUI(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("GhostMe Sim")
+        self.title("Location Picker")
         self.geometry("800x600")
         
         # State variable to track the active simulation thread
@@ -17,10 +18,12 @@ class GhostMeGUI(customtkinter.CTk):
 
         # --- UI Layout ---
         # 1. The Map Widget
-        self.map_widget = tkintermapview.TkinterMapView(self, corner_radius=10)
+        cache_db = str(Path(__file__).parent / "map_cache.db")
+        self.map_widget = tkintermapview.TkinterMapView(self, corner_radius=10, database_path=cache_db)
         self.map_widget.pack(fill="both", expand=True, padx=20, pady=20)
-        self.map_widget.set_position(40.7128, -74.0060) # Default to NYC
-        self.map_widget.set_zoom(10)
+        self.map_widget.set_tile_server("https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga")
+        self.map_widget.set_position(39.6895, -84.1688)  # Kettering, OH
+        self.map_widget.set_zoom(13)
 
         # Allow user to right click to set a marker
         self.map_widget.add_right_click_menu_command(label="Set Spoof Target",
@@ -63,5 +66,5 @@ class GhostMeGUI(customtkinter.CTk):
 
 if __name__ == "__main__":
     customtkinter.set_appearance_mode("dark")
-    app = GhostMeGUI()
+    app = LocationGUI()
     app.mainloop()
